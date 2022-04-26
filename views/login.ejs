@@ -1,0 +1,33 @@
+<%- include('./layout.ejs') %>
+<div class="d-flex justify-content-center align-items-center">
+    <form class="mt-5" method="post">
+
+        <% if (error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+            <h1 class="h2 mb-5">Se connecter sur l'administration Pizza</h1>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" name="email" id="form2Example1" class="form-control" placeholder="E-mail"/>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" name="password" id="form2Example2" class="form-control" placeholder="Mot de passe"/>
+        </div>
+
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary w-100 p-3 mb-4">Se connecter</button>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Pas encore membre ? <a href="/register">S'inscrire</a></p>
+        </div>
+    </form>
+</div>
+</div>
+</body>
+</html>

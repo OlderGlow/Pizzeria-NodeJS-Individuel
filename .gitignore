@@ -1,0 +1,10 @@
+/.idea
+.idea
+/node_modules
+/bower_components
+/dist
+/build
+/coverage
+/tmp
+/logs
+.env.local

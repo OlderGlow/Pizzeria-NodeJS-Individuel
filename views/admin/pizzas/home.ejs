@@ -1,0 +1,44 @@
+<%- include('../../layout.ejs') %>
+<a href="/admin/pizzas/add" class="btn btn-primary mt-5">Ajouter une pizza</a>
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Libelle</th>
+                <th scope="col">Ingredients</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Version Pizza</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% pizzas.map((pizza) => { %>
+                <tr>
+                    <td><%= pizza.code %></td>
+                    <td><%= pizza.name %></td>
+                    <td><%= pizza.ingredients.map((ing) => ing.name) %></td>
+                    <td><%= pizza.category %></td>
+                    <td><%= pizza.price %>€</td>
+                    <td><%= pizza.version_pizza %></td>
+                    <% if(pizza.isActive){ %>
+                    <td><a class="btn btn-secondary" href="/admin/pizzas/edit?id=<%= pizza.id %>">Editer</a></td>
+                    <td>
+                        <button id="deletePizza" data-id="<%= pizza.id %>" class="btn btn-danger">Supprimer</button>
+                    </td>
+                    <% } %>
+
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

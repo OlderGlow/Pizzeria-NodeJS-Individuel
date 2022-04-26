@@ -1,0 +1,35 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/boissons">Retour à l'administration des boissons</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <form class="mt-5" method="post">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <div class="form-outline mb-4">
+                    <input type="text" name="nom" class="form-control" placeholder="Nom de la boisson"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" name="prix" class="form-control" placeholder="Prix"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 p-3 mb-4">Ajouter la boisson</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

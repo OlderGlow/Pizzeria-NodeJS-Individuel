@@ -1,0 +1,33 @@
+{
+  "name": "2022-04-11-nodejs-projet-individuel",
+  "version": "1.0.0",
+  "description": "L'objectif du projet est de réaliser un système de gestion d'une pizzeria avec deux applications :",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roddet/2022-04-11-nodejs-projet-individuel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roddet/2022-04-11-nodejs-projet-individuel/issues"
+  },
+  "homepage": "https://github.com/roddet/2022-04-11-nodejs-projet-individuel#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0",
+    "socket.io": "^4.4.1"
+  }
+}

@@ -1,0 +1,39 @@
+<%- include('../../layout.ejs') %>
+<a href="/admin/promotions/add" class="btn btn-primary mt-5">Ajouter une promotion</a>
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
+                <th scope="col">% de réduction</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Date de fin</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% promotions.map((promotion) => { %>
+                <tr>
+                    <td><%= promotion.name %></td>
+                    <td><%= promotion.description %></td>
+                    <td><%= promotion.discount %>%</td>
+                    <td><%= new Date(promotion.start_date).toLocaleDateString('fr')%></td>
+                    <td><%= new Date(promotion.end_date).toLocaleDateString('fr') %></td>
+                    <td><a class="btn btn-secondary" href="/admin/promotions/edit?id=<%= promotion.id %>">Editer</a></td>
+                    <td>
+                        <button id="promotionsDeleteBtn" data-id="<%= promotion.id %>" class="btn btn-danger">Supprimer</button>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

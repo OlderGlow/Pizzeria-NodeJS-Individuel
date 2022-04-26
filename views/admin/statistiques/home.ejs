@@ -1,0 +1,88 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <div class="border border-dark p-3">
+            <h1>Top 5 des pizzas les plus vendues : </h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Quantité</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% pizzas.map((pizza) => { %>
+                    <tr>
+                        <th scope="row"><%= pizza.code %></th>
+                        <td><%= pizza.name %></td>
+                        <td><%= pizza.price %>€</td>
+                        <% commandes.map((c) => { %>
+                            <% if(c.pizzaId === pizza.id){ %>
+                                <td><%= c.quantite %></td>
+                            <% } %>
+                        <% }) %>
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="border border-dark p-3 mt-3">
+            <h1>Top 5 des meilleurs clients : </h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nombre de commande</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% usersTop5.map((user) => { %>
+                    <tr>
+                        <th scope="row"><%= user.user.id %></th>
+                        <td><%= user.user.lastname %></td>
+                        <td><%= user.user.firstname %></td>
+                        <td><%= user.dataValues.totalCommandes %></td>
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="border border-dark p-3 mt-3">
+            <h1>Top 5 des meilleurs livreurs : </h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nombre de commande</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% livreursTop5.map((user) => { %>
+                    <tr>
+                        <th scope="row"><%= user.livreur.id %></th>
+                        <td><%= user.livreur.lastName %></td>
+                        <td><%= user.livreur.firstName %></td>
+                        <td><%= user.dataValues.totalCommandes %></td>
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</body>
+</html>

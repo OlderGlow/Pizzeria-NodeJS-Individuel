@@ -1,0 +1,47 @@
+<%- include('../../layout.ejs') %>
+<a href="/admin/commandes/add" class="btn btn-primary mt-5">Ajouter une commande</a>
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">N° de commande</th>
+                <th scope="col">Client</th>
+                <th scope="col">Adresse de livraison</th>
+                <th scope="col">Status de commande</th>
+                <th scope="col">Prix total</th>
+                <th scope="col">Pizzas commandés</th>
+                <th scope="col">Livreur</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% commandes.map((commande) => { %>
+                <tr>
+                    <td><%= commande.id %></td>
+                    <td><%= commande.user.firstname + ' ' + commande.user.lastname %></td>
+                    <td><%= commande.address.street + ' ' + commande.address.city + ' ' + commande.address.zipCode %></td>
+                    <td><%  if(commande.status === '1'){ %>Commande enregistrée<% } else if(commande.status === '2') { %> En livraison <% } else if(commande.status === '3') {%> Commande livrée <% }%></td>
+                    <td><%= commande.prixTotal %>€</td>
+                    <td><% commande.pizzas.map((pizza) => {%>
+                            <%= pizza.name %> <strong>(x <%= pizza.Commandes_Pizzas.quantite %>)</strong>
+
+                    <%})%>
+                    </td>
+                    <td><%= commande.livreur.firstName + ' ' + commande.livreur.lastName %></td>
+                    </td>
+                    <td>
+                        <a href="/admin/commandes/edit?id=<%= commande.id %>" class="btn btn-secondary mb-3">Editer</a>
+                        <button id="commandeDeleteBtn" data-id="<%= commande.id %>" class="btn btn-danger">Supprimer</button>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

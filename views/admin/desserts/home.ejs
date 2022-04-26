@@ -1,0 +1,34 @@
+<%- include('../../layout.ejs') %>
+<a href="/admin/desserts/add" class="btn btn-primary mt-5">Ajouter un dessert</a>
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% desserts.map((dessert) => { %>
+                <tr>
+                    <td><%= dessert.name %></td>
+                    <td><%= dessert.price %>€</td>
+                    <td><a class="btn btn-secondary" href="/admin/desserts/edit?id=<%= dessert.id %>">Editer</a></td>
+                    <td>
+                        <button id="dessertsDeleteBtn" data-id="<%= dessert.id %>" class="btn btn-danger">Supprimer</button>
+                    </td>
+
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

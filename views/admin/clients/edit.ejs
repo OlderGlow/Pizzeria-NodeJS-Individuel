@@ -1,0 +1,89 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/clients">Retour à l'administration des clients</a>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <form class="mt-5 w-50" method="POST">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <!-- First Name input -->
+                <div class="form-outline mb-4">
+                    <label for="firstName">Prénom</label>
+                    <input type="text" name="firstName" class="form-control" placeholder="Prénom"
+                           value="<%= user.firstname %>"/>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="form-outline mb-4">
+                    <label for="lastName">Nom</label>
+                    <input type="text" name="lastName" class="form-control" placeholder="Nom"
+                           value="<%= user.lastname %>"/>
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="E-mail"
+                           value="<%= user.email %>"/>
+                </div>
+                <% user.addresses.map((address, i) => { %>
+
+                        <div class="border border-secondary p-3 mb-2" id="form<%= address.id %>">
+
+                            <p>Adresse n°<%= i + 1 %></p>
+                            <div class="form-outline mb-4">
+                                <label for="street">Numero et Rue</label>
+                                <input id="street<%= address.id %>" type="text" name="address" class="form-control" placeholder="Adresse"
+                                       value="<%= address.street %>"/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="city">Ville</label>
+                                <input type="text" id="city<%= address.id %>" name="city" class="form-control" placeholder="Ville"
+                                       value="<%= address.city %>"/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="zipCode">Code postal</label>
+                                <input type="text" id="zipCode<%= address.id %>" name="zipCode" class="form-control" placeholder="Code postal"
+                                       value="<%= address.zipCode %>"/>
+                            </div>
+                            <button type="button" class="btn btn-success w-50 p-2" data-id="<%= address.id %>"
+                                    id="btnAddress">Modifier l'adresse
+                            </button>
+
+                        </div>
+
+
+                <% }) %>
+                    <button type="button" class="btn btn-primary w-50 p-2 mt-2 mb-4" id="btnAddAddress">Ajouter une adresse</button>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" class="form-control" placeholder="Nouveau mot de passe"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label for="passwordConfirm">Confirmation du mot de passe</label>
+                    <input type="password" name="passwordConfirmation" class="form-control"
+                           placeholder="Répéter le mot de passe"/>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-success w-100 p-3 mb-4">Modifier le client</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

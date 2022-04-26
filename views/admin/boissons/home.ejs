@@ -1,0 +1,34 @@
+<%- include('../../layout.ejs') %>
+<a href="/admin/boissons/add" class="btn btn-primary mt-5">Ajouter une boisson</a>
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% boissons.map((boisson) => { %>
+                <tr>
+                    <td><%= boisson.nom %></td>
+                    <td><%= boisson.prix %>€</td>
+                    <td><a class="btn btn-secondary" href="/admin/boissons/edit?id=<%= boisson.id %>">Editer</a></td>
+                    <td>
+                        <button id="boissonsDeleteBtn" data-id="<%= boisson.id %>" class="btn btn-danger">Supprimer</button>
+                    </td>
+
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

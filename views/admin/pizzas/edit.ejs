@@ -1,0 +1,82 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/pizzas">Retour à l'administration des pizzas</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <form class="mt-5" method="POST">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                    <!-- First Name input -->
+                    <div class="form-outline mb-4">
+                        <label for="code">Code Pizza</label>
+                        <input type="text" name="code" class="form-control" disabled placeholder="Code Pizza" value="<%= pizza.code %>"/>
+                    </div>
+
+                    <!-- Last Name input -->
+                    <div class="form-outline mb-4">
+                        <label for="name">Nom pizza</label>
+                        <input type="text" name="name" class="form-control" disabled placeholder="Libelle" value="<%= pizza.name %>"/>
+                    </div>
+                    <!-- Email input -->
+                    <div class="border border-dark rounded p-3 mb-3 text-center" id="selectPizza">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="products" class="col-form-label mb-3 text-center justify-content-center d-flex">Ingrédients</label>
+                                <% pizza.ingredients.map((product) => { %>
+                                    <div class="col-12 d-flex justify-content-center">
+
+                                        <label for="quantity" class="text-center fw-bold mb-2"><%= product.name %>
+                                            <input type="hidden" name="ingredientId" value="<%= product.id %>">
+                                            <input type="number" name="quantity" class="form-control mb-3 mt-2"
+                                                   value="<%= product.Ingredients_Pizzas.quantite %>">
+                                            <p class="font-monospace fw-normal btn-outline-primary">Quantité en stock : <%= product.qteStock %></p>
+                                        </label>
+                                    </div>
+
+                                <% }) %>
+                                <% ingredients.map((ingredient) => {%>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <label for="quantity" class="text-center fw-bold mb-2"><%= ingredient.name %>
+                                            <input type="hidden" name="ingredientId" value="<%= ingredient.id %>">
+                                            <input type="number" name="quantity" class="form-control mb-3 mt-2"
+                                                   value="0">
+                                            <p class="font-monospace fw-normal btn-outline-primary">Quantité en stock : <%= ingredient.qteStock %></p>
+                                        </label>
+                                    </div>
+                                <% })%>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label for="category">Catégorie</label>
+                        <input type="text" name="category" class="form-control" placeholder="Catégorie" value="<%= pizza.category %>"/>
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label for="price">Prix</label>
+                        <input type="text" name="price" class="form-control" placeholder="Prix" value="<%= pizza.price %>"/>
+                    </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-success w-100 p-3 mb-4">Modifier la pizza</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/pizzas">Retour à l'administration des pizzas</a>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <h1 class="h1 mt-5">Ajouter une pizza</h1>
+            <form class="mt-5" method="post">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <!-- First Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="code" class="form-control" placeholder="Code Pizza"/>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="name" class="form-control" placeholder="Libelle"/>
+                </div>
+
+                <div class="border border-dark rounded p-3 mb-3 text-center" id="selectPizza">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="products" class="col-form-label mb-3 text-center justify-content-center d-flex">Ingrédients</label>
+                            <% ingredients.map((product) => { %>
+                                <div class="col-12 d-flex justify-content-center">
+
+                                    <label for="quantity" class="text-center fw-bold mb-2"><%= product.name %>
+                                        <input type="hidden" name="ingredientId" value="<%= product.id %>">
+                                        <input type="number" name="quantity" class="form-control mb-3 mt-2"
+                                               value="0">
+                                        <p class="font-monospace fw-normal btn-outline-primary">Quantité en stock : <%= product.qteStock %></p>
+                                    </label>
+                                </div>
+
+                            <% }) %>
+                            <a href="/admin/ingredients/add" class="btn btn-outline-dark">Ajouter un ingrédient</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" name="category" class="form-control" placeholder="Catégorie"/>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="price" class="form-control" placeholder="Prix"/>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary w-100 p-3 mb-4">Ajouter la pizza</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

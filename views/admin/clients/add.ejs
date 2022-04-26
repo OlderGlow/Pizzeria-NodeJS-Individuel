@@ -1,0 +1,72 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/clients">Retour à l'administration des clients</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <form class="mt-5" method="post">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <!-- First Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="firstName" class="form-control" placeholder="Prénom"/>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="lastName" class="form-control" placeholder="Nom"/>
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="email" name="email" class="form-control" placeholder="E-mail"/>
+                </div>
+                <div class="border border-secondary p-3 mb-2">
+                    <p>Adresse principale</p>
+                    <!-- Rue input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" name="street" class="form-control" placeholder="Numéro et rue"/>
+                    </div>
+
+                    <!-- Rue input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" name="zipCode" class="form-control" placeholder="Code Postal"/>
+                    </div>
+
+                    <!-- Rue input -->
+                    <div class="form-outline">
+                        <input type="text" name="city" class="form-control" placeholder="Ville"/>
+                    </div>
+                </div>
+                    <div id="otherAddress"></div>
+                <button id="addAddress" type="button" class="btn btn-success mb-4 text-center mt-2">Ajouter une autre adresse</button>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" name="password" class="form-control" placeholder="Mot de passe"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" name="passwordConfirmation" class="form-control"
+                           placeholder="Répéter le mot de passe"/>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary w-100 p-3 mb-4">Inscrire un client</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

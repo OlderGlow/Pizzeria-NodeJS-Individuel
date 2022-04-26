@@ -1,0 +1,78 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+
+    <div class="d-flex justify-content-center align-items-center flex-column">
+        <h1 class="h3 mt-5">Modifier la commande</h1>
+        <form class="mt-2" method="post" style="width: 35%;">
+
+            <% if (error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <label for="clients" class="col-form-label">Client</label>
+            <input disabled class="disabled form-control" value="<%= commande.user.firstname %>">
+            <label for="clients" class="col-form-label">Adresse de livraison</label>
+            <select id="address" name="address" class="form-select mb-2">
+                <% commande.user.addresses.map((address) => { %>
+                    <option value="<%= address.id %>"><%= address.street + ' ' + address.zipCode + ' ' + address.city %></option>
+                <% }) %>
+            </select>
+            <input type="hidden" name="id" value="<%= commande.id %>">
+                <input type="hidden" name="userId" value="<%= commande.user.id %>">
+            <label for="status" class="col-form-label">Status</label>
+            <select id="status" name="status" class="form-select mb-2">
+                <option <% if(commande.status === '1'){%>selected="selected"<% }%> value="1">Commande enregistrée</option>
+                <option <% if(commande.status === '2'){%>selected="selected"<% }%> value="2">En livraison</option>
+                <option <% if(commande.status === '3'){%>selected="selected"<% }%> value="3">Livré</option>
+            </select>
+            <label for="pizzas" class="col-form-label">Pizzas</label>
+            <div class="border border-dark rounded p-3 mb-3" id="selectPizza">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="products" class="col-form-label mb-3 text-center justify-content-center d-flex">Pizzas</label>
+                        <% commande.pizzas.map((product) => { %>
+                            <div class="col-12 d-flex justify-content-center">
+
+                                <label for="quantity" class="text-center fw-bold mb-2"><%= product.name %>
+                                    <input type="hidden" name="pizzaId" value="<%= product.id %>">
+                                    <input type="number" name="quantity" class="form-control mb-3 mt-2"
+                                           value="<%= product.Commandes_Pizzas.quantite %>">
+                                </label>
+                            </div>
+
+                        <% }) %>
+                        <% pizzasNotInCommande.map((pizza) => { %>
+                            <div class="col-12 d-flex justify-content-center">
+
+                                <label for="quantity" class="text-center fw-bold mb-2"><%= pizza.name %>
+                                    <input type="hidden" name="pizzaId" value="<%= pizza.id %>">
+                                    <input type="number" name="quantity" class="form-control mb-3 mt-2"
+                                           value="0">
+                                </label>
+                            </div>
+                        <% }) %>
+                    </div>
+
+                </div>
+            </div>
+            <label for="clients" class="col-form-label">Livreur</label>
+            <select name="livreurId" class="form-select mb-3">
+                <% livreurs.map((livreur) => { %>
+                    <% if(livreur.id === commande.livreurId){ %><option selected="selected" value="<%= livreur.id %>">
+                        <%= livreur.firstName + ' ' + livreur.lastName %></option> <% } else{ %>
+                        <option value="<%= livreur.id %>"><%= livreur.firstName + ' ' + livreur.lastName %></option> <% } %>
+                <% }) %>
+            </select>
+            <button type="submit" class="btn btn-success w-100 p-3 mb-4">Modifier la commande</button>
+
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>

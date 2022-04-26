@@ -1,0 +1,36 @@
+<%- include('../../layout.ejs') %>
+<a href="/admin/Livreurs/add" class="btn btn-primary mt-5">Ajouter un livreur</a>
+<div class="row">
+
+    <div class="col-8 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Ingrédient</th>
+                <th scope="col">Quantité en stock</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% livreurs.map((livreur) => { %>
+                <tr>
+                    <td><%= livreur.firstName %></td>
+                    <td><%= livreur.lastName %></td>
+                    <td><%= livreur.email %></td>
+                    <td><a class="btn btn-secondary" href="/admin/Livreurs/edit?id=<%= livreur.id %>">Editer</a></td>
+                    <td>
+                        <button id="livreurDeleteBtn" data-id="<%= livreur.id %>" class="btn btn-danger">Supprimer</button>
+                    </td>
+
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

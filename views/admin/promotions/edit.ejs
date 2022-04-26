@@ -1,0 +1,57 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/promotions">Retour à l'administration des promotions</a>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <h1 class="h3 mt-3">Editer une promotion</h1>
+            <form class="mt-5" method="post">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <div class="form-outline mb-4">
+                    <label for="name">Nom du code promo</label>
+                    <input type="text" name="name" class="form-control" placeholder="Nom du code promo" value="<%= promotion.name %>"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label for="code">Description de la promotion</label>
+                    <input type="text" name="description" class="form-control"
+                           placeholder="Description de la promotion" value="<%= promotion.description %>"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label for="code">% de réduction</label>
+                    <input type="number" name="discount" class="form-control" placeholder="% de réduction" value="<%= promotion.discount %>"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label for="startDate">Date de début de la promotion</label>
+                    <input type="date" name="start_date" class="form-control"
+                    />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label for="endDate">Date de fin de la promotion</label>
+                    <input type="date" name="end_date" class="form-control"
+                           placeholder="Date de fin de la promotion"/>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-success w-100 p-3 mb-4">Editer la promotion</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

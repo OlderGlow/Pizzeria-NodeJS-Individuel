@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+        <img class="navbar-brand" src="/images/logo.jpg" width="80" height="auto"/>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <% if(!active.includes('login')){ %>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('users-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/users">Administrateurs</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('pizzas-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/pizzas">Pizzas</a>
+                </li>
+            </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link <% if(active.includes('boissons-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/boissons">Boissons</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link <% if(active.includes('desserts-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/desserts">Desserts</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-current="page" href="#">Menus</a>
+                    </li>
+                </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('clients-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/clients">Clients</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('commandes-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/commandes">Commandes</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('livreurs-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/livreurs">Livreurs</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('ingredients-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/ingredients">Ingrédients</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('statistiques-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/statistiques">Statistiques</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link <% if(active.includes('promotions-home')){ %>btn-secondary rounded text-white active<% } %>" aria-current="page" href="/admin/promotions">Promotions</a>
+                </li>
+            </ul>
+                <% } %>
+            <% if(!active.includes('login')){ %>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-warning" href="/logout">Déconnexion</a>
+                </li>
+            </ul>
+            <% }else{ %>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/login">Se connecter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/register">S'inscrire</a>
+                </li>
+            </ul>
+            <% } %>
+
+        </div>
+    </div>
+</nav>

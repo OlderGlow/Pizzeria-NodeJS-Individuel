@@ -1,0 +1,53 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+    <div class="col-8 mt-3">
+        <a href="/admin/users">Retour à l'administration des pizzas</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <form class="mt-5" method="POST">
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <!-- First Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="firstName" class="form-control" placeholder="Prénom" value="<%= user.firstname %>"/>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="lastName" class="form-control" placeholder="Nom" value="<%= user.lastname %>"/>
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="email" name="email" class="form-control" placeholder="E-mail" value="<%= user.email %>"/>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" name="password" class="form-control" placeholder="Nouveau mot de passe"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" name="passwordConfirmation" class="form-control"
+                           placeholder="Répéter le mot de passe"/>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-success w-100 p-3 mb-4">Modifier l'utilisateur</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-4 mt-5 d-flex justify-content-end">
+        <%- include('../../sidebar.ejs') %>
+    </div>
+</div>
+</div>
+</body>
+</html>

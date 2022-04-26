@@ -1,0 +1,44 @@
+<%- include('./layout.ejs') %>
+<div class="d-flex justify-content-center align-items-center">
+    <form class="mt-5" method="post">
+
+        <% if (error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+
+            <h1 class="h2 mb-5">S'inscrire sur l'administration Pizza</h1>
+        <!-- First Name input -->
+        <div class="form-outline mb-4">
+            <input type="text" name="firstName" class="form-control" placeholder="Prénom"/>
+        </div>
+
+        <!-- Last Name input -->
+        <div class="form-outline mb-4">
+            <input type="text" name="lastName" class="form-control" placeholder="Nom"/>
+        </div>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" name="email" class="form-control" placeholder="E-mail"/>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" name="password" class="form-control" placeholder="Mot de passe"/>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="password" name="passwordConfirmation" class="form-control"
+                   placeholder="Répéter le mot de passe"/>
+        </div>
+
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-outline-primary w-100 p-3 mb-4">S'inscrire</button>
+
+    </form>
+</div>
+</div>
+</body>
+</html>

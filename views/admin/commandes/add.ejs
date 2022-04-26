@@ -1,0 +1,65 @@
+<%- include('../../layout.ejs') %>
+
+<div class="row">
+
+
+    <div class="d-flex justify-content-center align-items-center flex-column">
+        <h1 class="h3 mt-5">Ajouter une commande</h1>
+        <form class="mt-2" method="post" style="width: 35%;">
+
+            <% if (error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <label for="clients" class="col-form-label">Client</label>
+            <select onchange="getAddresses()" name="userId" class="form-select mb-3" id="selectUser">
+                <option value="0">Choisissez un client</option>
+                <% allUsers.map((user) => { %>
+                    <option id="optionUser<%= user.id %>"
+                            value="<%= user.id %>"><%= user.firstname + ' ' + user.lastname %></option>
+                <% }) %>
+            </select>
+
+            <label for="clients" class="col-form-label">Adresse de livraison</label>
+                <select name="addressId" class="form-select mb-3" id="selectAddress">
+                </select>
+            <div class="border border-dark rounded p-3 mb-3" id="selectPizza">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="products" class="col-form-label mb-3 text-center justify-content-center d-flex">Pizzas</label>
+                        <% allPizzas.map((product) => { %>
+                            <div class="col-12 d-flex justify-content-center">
+
+                                <label for="quantity" class="text-center fw-bold mb-2"><%= product.name %>
+                                    <input type="hidden" name="pizzaId" value="<%= product.id %>">
+                                    <input type="number" name="quantity" class="form-control mb-3 mt-2"
+                                           value="0">
+                                </label>
+                            </div>
+
+                        <% }) %>
+                    </div>
+
+                </div>
+            </div>
+
+            <label for="clients" class="col-form-label">Livreur</label>
+            <select name="livreurId" class="form-select mb-3">
+
+                <% allLivreurs.map((livreur) => { %>
+                    <option value="<%= livreur.id %>"><%= livreur.firstName + ' ' + livreur.lastName %></option>
+                <% }) %>
+            </select>
+                <input type="text" class="form-control mb-3" name="discount" placeholder="Un code promo ?">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary w-100 p-3 mb-4" id="submitAddCommande" onclick="emitNewCommande()">Ajouter la commande</button>
+
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>
